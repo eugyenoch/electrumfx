@@ -21,25 +21,28 @@ include('../cookie.php');
                         <thead>
                             <tr class="data-item data-head">
                                 <th class="data-col dt-tnxno">Email Address</th>
-                                <th class="data-col dt-amount">Firstname</th>
-                                <th class="data-col dt-account">Lastname</th>
+                                <th class="data-col dt-tnxno">Firstname</th>
+                                <th class="data-col dt-tnxno">Lastname</th>
                                 <th class="data-col dt-type">
-                                    <div class="dt-type-text">Address</div>
+                                    <div class="dt-tnxno">Address</div>
                                 </th>
                                  <th class="data-col dt-type">
-                                    <div class="dt-type-text">City</div>
+                                    <div class="dt-tnxno">City</div>
                                 </th>
                                  <th class="data-col dt-type">
-                                    <div class="dt-type-text">Country</div>
+                                    <div class="dt-tnxno">Country</div>
                                 </th>
                                 <th class="data-col dt-type">
-                                    <div class="dt-type-text">Phone</div>
+                                    <div class="dt-tnxno">Phone</div>
                                 </th>
                                 <th class="data-col dt-type">
-                                    <div class="dt-type-text">Photo</div>
+                                    <div class="dt-tnxnot">Photo</div>
                                 </th>
+                                <!-- <th class="data-col dt-type">
+                                    <div class="dt-tnxno">Edit</div>
+                                </th> -->
                                 <th class="data-col dt-type">
-                                    <div class="dt-type-text">Action</div>
+                                    <div class="dt-type-text">Delete</div>
                                 </th>
                             </tr>
                         </thead>
@@ -52,9 +55,6 @@ include('../cookie.php');
                                                         <tr class="data-item">
                                 <td class="data-col dt-tnxno">
                                     <div class="d-flex align-items-center">
-                                      <div class="data-state data-state-pending">
-                                            <span class="d-none">waiting</span>
-                                        </div>
                                            <div class="fake-class">
                                         <span class="lead tnx-id"><?php if(isset($user_email) && $user_email!==null){echo $user_email;}?></span>
                                             <span class="sub sub-date"><?php if(isset($reg_date) && $reg_date!==null){echo $reg_date;}?></span>
@@ -87,13 +87,24 @@ include('../cookie.php');
                                 </td>
 
 
-                                <td class="data-col dt-account" id="td_approve">
+                                <td class="data-col dt-token" id="td_approve">
      <span class="lead user-info text-warning"><?php if(isset($phone) && $phone!==null){echo $phone;}?></span></td>
-      <td class="data-col dt-account" id="td_approve">
+      <td class="data-col dt-token" id="td_approve">
      <span class="lead user-info text-warning"><?php if(isset($photo) && $photo!==null){echo "<img src='../upload/{$photo}' width='40px' height='40px'>";}?></span> </td>
 
-                               <td class="data-col dt-account" id="td_approve">
-     <a href="user.php?vu=<?= $id_no; ?>"><button class="btn btn-danger">Delete</button></a>  </td>
+     <!--  <td class="data-col dt-token" id="td_approve">
+     <a href="change-wallet.php?eu=<?= $id_no; ?>" class="dt-type-md"><button class="btn btn-danger">Edit User</button></a>  
+
+      <a href="change-wallet?eu=<?= $id_no; ?>" class="dt-type-sm"><span class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">Edit</span></a>
+
+ </td>
+ -->
+                               <td class="data-col dt-token" id="td_approve">
+     <a href="user.php?vu=<?= $id_no; ?>" class="dt-type-md"><button class="btn btn-danger">Delete</button></a>  
+
+      <a href="user.php?vu=<?= $id_no; ?>" class="dt-type-sm"><span class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">Del</span></a>
+
+ </td>
                             </tr><?php }?>
                         
                                                     </tbody>
@@ -128,7 +139,7 @@ include('../cookie.php');
   </div>
   <!-- .page-content -->
 </div>
- 
+ <?php include('footer-menu.php');?>
     <div class="footer-bar">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -167,17 +178,7 @@ include('../cookie.php');
     <script src="https://transactright.com/js/app.js"></script>
 <script src="../assets/js/jquery.bundle49f7.js"></script>
 <script src="../assets/js/script49f7.js"></script>
-       <!--  <script type="text/javascript">
-        $('#reload').click(function() {
-            $.ajax({
-                type: 'GET',
-                url: '/reload-captcha',
-                success: function(data) {
-                    $(".captcha span").html(data.captcha);
-                }
-            });
-        });
-    </script> -->
+      
 <!-- Toastr -->
 <script src="../dist/js/toastr.min.js"></script>
 <script type="text/javascript">

@@ -28,7 +28,7 @@ if(isset($_POST['signin'])){
       $_SESSION['user'] = $admin_email;
       $toast = "success";
         //$_SESSION['email'] = $user;
-        header("Refresh:1,url=./edit-profile.php");
+        header("Refresh:1,url=./view-users.php");
     }
 }
 else{

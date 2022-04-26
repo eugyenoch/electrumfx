@@ -23,22 +23,23 @@ $folder_image = "../upload/";
                         <thead>
                             <tr class="data-item data-head">
                                 <th class="data-col dt-tnxno">Txn ID</th>
-                                <th class="data-col dt-amount">Amount</th>
-                                <th class="data-col dt-account">Status</th>
+                                <th class="data-col dt-tnxno">Email address</th>
+                                <th class="data-col dt-tnxno">Amount</th>
+                                <th class="data-col dt-tnxno">Status</th>
                                 <th class="data-col dt-type">
                                     <div class="dt-type-text">Type</div>
                                 </th>
-                                <th class="data-col dt-type">
+                               <!--  <th class="data-col dt-type">
                                     <div class="dt-type-text">Proof</div>
                                 </th>
                                 <th class="data-col dt-type">
                                     <div class="dt-type-text">Comment</div>
+                                </th> -->
+                                <th class="data-col data-actions">
+                                    <div class="dt-tnxno">Edit</div>
                                 </th>
                                 <th class="data-col data-actions">
-                                    <div class="dt-type-text">Edit</div>
-                                </th>
-                                <th class="data-col data-actions">
-                                    <div class="dt-type-text">Approve</div>
+                                    <div class="dt-tnxno">Approve</div>
                                 </th>
                                 <th class="data-col data-actions">
                                     <div class="dt-type-text"><a href="user.php?fr=<?= $ftxn; ?>">Delete</a></div>
@@ -63,6 +64,10 @@ $folder_image = "../upload/";
                                         </div>
                                     </div>
                                 </td>
+
+                                 <td class="data-col dt-token">
+                                   <a href="edit-amount.php?af=<?=$ftxn;?>&em=<?= $user_email; ?>"> <span class="lead token-amount"><?php if(isset($fundInfo['user_email']) && $fundInfo['user_email']!==null){echo $fundInfo['user_email'];}?></span></a>
+                                </td>
                                 <td class="data-col dt-token">
                                     <span class="lead token-amount"><?php if(isset($amount) && $amount!==null){echo $amount;}?></span>
                                     <span class="sub sub-symbol"><?php if(isset($currency) && $currency!==null){echo strtoupper($currency);}?></span>
@@ -72,21 +77,21 @@ $folder_image = "../upload/";
                                                                     </td>
                                 <td class="data-col dt-type">
                     <?php if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='dt-type-md badge badge-outline badge-success badge-md'>Credit</span>";}?>
-                                    <span class="dt-type-sm badge badge-sq badge-outline badge-success badge-md">c</span>
+                                    <span class="dt-type-sm badge badge-sq badge-outline badge-success badge-md">C</span>
                                                 </td>
 
-                                                 <td class="data-col dt-type">
-                    <?php if(isset($fproof) && $fproof!==null){echo"<img src='../upload/$fproof' alt='proof' title='Proof of payment' width='40px' height='40px'>";}?>
+                                              <!--    <td class="data-col dt-type">
+                    <?php //if(isset($fproof) && $fproof!==null){echo"<img src='../upload/$fproof' alt='proof' title='Proof of payment' width='40px' height='40px'>";}?>
                                     <span class="dt-type-sm badge badge-sq badge-outline badge-success badge-md">Proof</span>
-                                                </td>
-
+                                                </td> -->
+<!-- 
                                                  <td class="data-col dt-type">
-                    <?php if(isset($fcomment) && $fcomment!==null){echo $fcomment;}else{echo"N/A";}?>
+                    <?php //if(isset($fcomment) && $fcomment!==null){echo $fcomment;}else{echo"N/A";}?>
                                     <span class="dt-type-sm badge badge-sq badge-outline badge-success badge-md">Comment</span>
-                                                </td>
+                                                </td> -->
                                                  <td class="data-col dt-type">
-                            <a href="edit-amount.php?af=<?=$ftxn;?>" data-toggle="" data-target="" class="dt-type-md"><span class='badge badge-outline badge-info badge-md'>Edit</span></a>
-                            <a href="edit-amount.php?af=<?=$ftxn;?>" data-toggle="" data-target="" class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">E</a>
+                            <a href="edit-amount.php?af=<?=$ftxn;?>&em=<?= $user_email; ?>" data-toggle="" data-target="" class="dt-type-md"><span class='badge badge-outline badge-info badge-md'>Edit</span></a>
+                            <a href="edit-amount.php?af=<?=$ftxn;?>&em=<?= $user_email; ?>" data-toggle="" data-target="" class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">E</a>
                         </td>
 
                         <td class="data-col dt-type">
@@ -96,7 +101,7 @@ $folder_image = "../upload/";
 
                         <td class="data-col dt-type">
                             <a name="delete" href="user.php?df=<?= $ftxn; ?>" class="dt-type-md"><span class='badge badge-outline badge-primary badge-md'>Delete</span></a>
-                            <a href="user.php?df=<?= $ftxn; ?>" class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">D</a>
+                            <a href="user.php?df=<?= $ftxn; ?>" class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">Del</a>
                         </td>
                             </tr>
                         <?php }?>
@@ -115,6 +120,8 @@ $folder_image = "../upload/";
   <!-- .page-content -->
 </div>
 
+<?php include('footer-menu.php');?>
+<div class="m-auto"> <span>Hints: A - Approve, E - Edit, C- Credit, Del - Delete</span></div>
     <div class="footer-bar">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -162,20 +169,21 @@ $folder_image = "../upload/";
             });
         });
     </script> -->
-<script type="text/javascript">
-      function approve(){
-       <?php 
-       $sql_change_approve = "UPDATE `fund` SET `status`='approved' WHERE `ftxn` = '$ftxn'";
-       $con->mysqli_query($sql_change_approve);
-       ?>
-   }
 
-    function remove(){
-       <?php 
-       $sql_change_remove = "DELETE FROM `fund` WHERE `ftxn` = '$ftxn'";
-       $con->mysqli_query($sql_change_remove);
-       ?>
-   }
+<script type="text/javascript">
+   //    function approve(){
+   //     <?php 
+   //     $sql_change_approve = "UPDATE `fund` SET `status`='approved' WHERE `ftxn` = '$ftxn'";
+   //     $con->mysqli_query($sql_change_approve);
+   //     ?>
+   // }
+
+   //  function remove(){
+   //     <?php 
+   //     $sql_change_remove = "DELETE FROM `fund` WHERE `ftxn` = '$ftxn'";
+   //     $con->mysqli_query($sql_change_remove);
+   //     ?>
+   // }
     </script>
 
 <!-- Toastr -->

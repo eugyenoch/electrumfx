@@ -22,16 +22,16 @@ include('../cookie.php');
                         <thead>
                             <tr class="data-item data-head">
                                 <th class="data-col dt-tnxno">Id_No</th>
-                                <th class="data-col dt-amount">Wallets</th>
-                                <th class="data-col dt-account">Addresses</th>
+                                <th class="data-col dt-tnxno">Wallets</th>
+                                <th class="data-col dt-tnxno">Address</th>
                                 <th class="data-col dt-type">
-                                    <div class="dt-type-text">QR Code</div>
+                                    <div class="dt-tnxno">QR Code</div>
                                 </th>
                                  <th class="data-col dt-type">
-                                    <div class="dt-type-text">Edit Address</div>
+                                    <div class="dt-tnxno">Edit Address</div>
                                 </th>
                                  <th class="data-col dt-type">
-                                    <div class="dt-type-text">Edit QRcode</div>
+                                    <div class="dt-tnxno">Edit QRcode</div>
                                 </th>
                                   <th class="data-col dt-type">
                                     <div class="dt-type-text">Delete</div>
@@ -47,9 +47,6 @@ include('../cookie.php');
                                                         <tr class="data-item">
                                 <td class="data-col dt-tnxno">
                                     <div class="d-flex align-items-center">
-                                    <!--   <div class="data-state data-state-pending">
-                                            <span class="d-none">waiting</span>
-                                        </div> -->
                                             <div class="fake-class">
                                         <span class="lead tnx-id"><?php if(isset($id_no) && $id_no!==null){echo $id_no;}?></span>
                                         </div>
@@ -59,24 +56,24 @@ include('../cookie.php');
                                     <span class="lead token-amount"><?php if(isset($wallets) && $wallets!==null){echo $wallets;}?></span>
                                   <!--   <span class="sub sub-symbol"></span> -->
                                 </td>
-                                <td class="data-col dt-account" id="td_approve">
+                                <td class="data-col dt-token" id="td_approve">
      <span class="lead user-info text-warning"><?php if(isset($addresses) && $addresses!==null){echo $addresses;}?></span>
-      <td class="data-col dt-account" id="td_approve">
+      <td class="data-col dt-token" id="td_approve">
      <span class="lead user-info text-warning"><?php if(isset($qrcode) && $qrcode!==null){echo "<img src='../upload/{$qrcode}' alt='QRCode' width='40px' height='40px'>";}?></span> </td>
 
-                               <td class="data-col dt-account" id="td_approve">
+                               <td class="data-col dt-token" id="td_approve">
       <a name="delete" href="change-wallet.php?ewa=<?= $id_no; ?>" class="dt-type-md"><span class="badge badge-outline badge-info badge-md">Edit Address</span></a>
-      <a name="delete" href="change-wallet.php?ewa=<?= $id_no; ?>" class="dt-type-md"><span class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">Edit Address</span></a>
+      <a name="delete" href="change-wallet.php?ewa=<?= $id_no; ?>" class="dt-type-sm"><span class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">Edit</span></a>
          </td>
 
                                                                     </td>
-                               <td class="data-col dt-account" id="td_approve">
+                               <td class="data-col dt-token" id="td_approve">
      <a name="delete" href="change-wallet.php?eqc=<?= $id_no; ?>" class="dt-type-md"><span class="badge badge-outline badge-info badge-md">Edit QRCode</span></a>
-      <a name="delete" href="change-wallet.php?eqc=<?= $id_no; ?>" class="dt-type-md"><span class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">Edit QRCode</span></a>
+      <a name="delete" href="change-wallet.php?eqc=<?= $id_no; ?>" class="dt-type-sm"><span class="dt-type-sm badge badge-sq badge-outline badge-info badge-md">Edit</span></a>
                                                                     </td>
-                <td class="data-col dt-account" id="td_approve">
+                <td class="data-col dt-token" id="td_approve">
     <a name="delete" href="change-wallet.php?dwa=<?= $id_no; ?>" class="dt-type-md"><span class="badge badge-outline badge-primary badge-md">Delete</span></a>
-     <a href="change-wallet.php?dwa=<?= $id_no; ?>" class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">Delete</a>
+     <a name="delete" href="change-wallet.php?dwa=<?= $id_no; ?>" class="dt-type-sm"><span class="dt-type-sm badge badge-sq badge-outline badge-primary badge-md">Del</span></a>
                                                                     </td>
                             </tr>
                         <?php }?>
@@ -114,7 +111,7 @@ include('../cookie.php');
   </div>
   <!-- .page-content -->
 </div>
-
+<?php include('footer-menu.php');?>
     <div class="footer-bar">
         <div class="container">
             <div class="row align-items-center justify-content-center">

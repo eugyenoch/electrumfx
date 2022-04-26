@@ -66,7 +66,7 @@ if(isset($_POST['reg'])){
   $sqlIns = "INSERT INTO users(firstname,lastname,user_email,user_pass,affid)VALUES('$fname','$lname','$email','$cpass','$affid')";
   $sqlC = $con->query($sqlIns);
 
-  $sqlIns2 = "INSERT INTO fund(user_email,amount,status)VALUES('$email',50,'approved')";
+  $sqlIns2 = "INSERT INTO fund(user_email,currency,currency_name,amount,status)VALUES('$email','BTC','Bitcoin',0,'approved')";
   $sqlC2 = $con->query($sqlIns2);
  if($sqlC){
   $toast = "success";header("Refresh:2,url=preloader.php?fn=$fname&em=$email");

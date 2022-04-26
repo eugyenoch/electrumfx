@@ -85,9 +85,17 @@ if(!isset($_SESSION['email'])){header('Location:login.php');}
 </div>
 <div class="token-balance token-balance-s2">
 
-<h3><center><span class="orange" style="border: 3px solid #FF880E; border-radius:50%;margin:auto; padding:4%; font-size:140px;"><i class="fa fa-wallet"></i></span></center></h3><br><br>
-<h3 class="card-sub-title m-auto"><center>Total Balances:<br>
-    <?php if(isset($fund_info['amount']))?>
+<h3><center><span class="orange" style="border:2px solid #FF880E; border-radius:50%;margin:auto; padding:4%; font-size:140px;"><i class="fa fa-wallet"></i></span></center></h3><br><br>
+<h3 class="card-sub-title m-auto"><center>Total Balances<br>
+    <?php 
+    $total_balances = "SELECT sum(amount) AS fund_total FROM fund WHERE user_email='$session_email' AND status='approved'";
+    $total_balance = $con->query($total_balances);
+    $totals_fetch_assoc = mysqli_fetch_assoc($total_balance);
+    if($totals_fetch_assoc){
+       $totals = $totals_fetch_assoc['fund_total'];
+       echo $totals;
+    }
+    ?>
 </center></h3><br>
 <ul class="token-balance-list row">
 <li class="token-balance-sub col-md-12 col-lg-6 mb-3" hidden><?php
@@ -99,28 +107,26 @@ if(!isset($_SESSION['email'])){header('Location:login.php');}
 </li>
 
 <li class="token-balance-sub col-md-12 col-lg-12 mb-3">
-    <?php
-    foreach($sql_fund_exec as $fund_info){extract($fund_info);?>
-   <ul class="list-group list-unstyled"> 
-    <li class="list-group-item" style="background:transparent !important;"><span class="lead orange" style="font-family:tahoma;"><center><big>
-        <?php if(isset($fund_info['currency_name']) && $fund_info['status']==="approved"){echo $fund_info['currency_name'];}?>&nbsp;&nbsp;
-        <?php if(isset($fund_info['amount']) && $fund_info['status']==="approved"){
-        echo $fund_info['amount'] ." ". $fund_info['currency'];
-    } ?>
-    <?php if(!isset($fund_info['currency_name']) && !isset($fund_info['amount']) && !isset($fund_info['status'])){echo
-        "<table class='table-responsive table'>
-        <tr><td>Bitcoin</td><td>0.00 BTC</td></tr>
-        <tr><td>Ethereum</td><td>0.00 ETH</td></tr>
-        <tr><td>Tether</td><td>0.00 USDT</td></tr>
-        </table>
-        ";
+    <ul class="list-group list-unstyled text-center"> 
+        <li class="list-group-item" style="background:transparent !important;"><span class="lead cursive orange" style="font-family:tahoma; position:relative;">Bitcoin&nbsp;
+    <?php foreach($sql_fund_exec as $fund_info){extract($fund_info);}
+        if(isset($fund_info['currency']) && $fund_info['currency']!==NULL){$curr = $fund_info['currency'];}
+        $total_amounts = "SELECT sum(amount) AS amount_total FROM fund WHERE user_email='$session_email' AND (currency = '$curr' AND status='approved')";
+    $total_amount = $con->query($total_amounts);
+    $total_amount_fetch_assoc = mysqli_fetch_assoc($total_amount);
+    if($total_amount_fetch_assoc){
+       $allAmount = $total_amount_fetch_assoc['amount_total'];
+       echo $allAmount ." ".$curr;
+     }else{echo "0.00 BTC";}
+       ?>
 
-    }?>
-        
-    </big></center></span></li></ul>
-<?php } ?>
-</li>
-  </ul>
+ </span></li>
+
+ <li class="list-group-item" style="background:transparent !important;"><span class="lead cursive orange" style="font-family:tahoma;position:relative;">Ethereum&nbsp; 0.00&nbsp; ETH</span></li>
+ <li class="list-group-item" style="background:transparent !important;"><span class="lead cursive orange" style="font-family:tahoma;position:relative;">Tether&nbsp; 0.00&nbsp; USDT</span></li>
+ <li class="list-group-item" style="background:transparent !important;"><span class="lead cursive orange" style="font-family:tahoma;position:relative;">NFT's&nbsp; 0.00&nbsp; NFT</span></li>
+</ul>
+  </li></ul>
 </div>
 </div>
 </div>

@@ -6,8 +6,9 @@ include('../cookie.php');
 if(isset($_POST['editAmount'])){
   //Extract variables from user input
   $etxn = $_POST['etxn'];
+  $eemail = $_POST['eemail'];
   $eamount = floatval($_POST['eamount']);
-  $sql_update_fund_amount = "UPDATE `fund` SET `amount`='$eamount' WHERE `ftxn`='$etxn'";
+  $sql_update_fund_amount = "UPDATE `fund` SET `amount`='$eamount' WHERE `ftxn`='$etxn' AND `user_email`='$eemail'";
 
   if($con->query($sql_update_fund_amount) === TRUE){
     $toast = "success";
@@ -15,7 +16,7 @@ if(isset($_POST['editAmount'])){
   }
   else{$toast = "fail";}
 }
-$con->close();
+
 ?>
 <?php include('header.php'); ?>
 
@@ -33,6 +34,11 @@ $con->close();
       <div class="form-group has-feedback">
         <input type="text" name="etxn" class="form-control sty1" value="<?php if(isset($_GET['af']) && $_GET['af']!==null){echo $_GET['af'];}?>">
       </div>
+
+      <div class="form-group has-feedback">
+        <input type="text" name="eemail" class="form-control sty1" value="<?php if(isset($_GET['em']) && $_GET['em']!==null){echo $_GET['em'];}?>">
+      </div>
+
       <div class="form-group has-feedback">
         <input type="text" name="eamount" class="form-control sty1" placeholder="Enter new amount" required>
       
@@ -68,4 +74,6 @@ $con->close();
     <?php
 if(isset($toast) && $toast==='success'){echo "<script>toastr.success('You have changed user information, 'Success')</script>";}
 if(isset($toast) && $toast==='fail'){echo "<script>toastr.error('That operation could not be carried out. Try again', 'Error')</script>";}
+
+$con->close();
 ?>

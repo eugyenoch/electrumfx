@@ -1,5 +1,5 @@
 
- <div class="topbar-wrap">
+<div class="topbar-wrap">
         <div class="topbar is-sticky">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
@@ -45,7 +45,8 @@
                     <ul class="navbar-menu">
                        <!--  <li><a href="#"><span class="icon-s"><i class="fa fa-columns"></i>
                                     Dashboard</a></li> -->
-                        <li><a href="./edit-profile.php"><span class="icon-s"><i class="fa fa-user"></i>&nbsp;Dashboard</a></li>
+                                    <li><a class="p2pText" href="view-users.php">Dashboard</a></li>
+                        
                         <li class="has-dropdown page-links-all">
                             <a class="drop-toggle" href="#"><i class="fa fa-users"></i>&nbsp;Users and Admin</a>
                             <ul class="navbar-dropdown">
@@ -59,14 +60,15 @@
                             <a class="drop-toggle" href="#"><i class="fa fa-chart-area"></i>&nbsp;Account Requests</a>
                             <ul class="navbar-dropdown">
                                <li><a class="p2pText" href="funding-requests.php">Funding Requests</a></li>
-                                 <li><a class="p2pText" href="transactions.php">Trade Requests</a></li> 
                                 <li><a class="p2pText" href="withdraw-requests.php">Withdraw Requests</a></li>
+                                <li><a class="p2pText" href="transactions.php">Trade Requests</a></li> 
                             </ul>
                         </li>
 
                         <li><a href="addresses.php"><i class="fa fa-file-invoice-dollar"></i>&nbsp;Addresses</a></li>
-                         <li><a href="transactions.php"><i class="fa fa-file-invoice-dollar"></i>&nbsp;Account Transactions</a></li>
+                        
                       <!--   <li><a href="#" data-toggle="modal" data-target="#withdrawal-modal"><i class="fa fa-hand-holding-usd"></i> Withdrawal</a></li> -->
+                      <li><a href="./edit-profile.php"><span class="icon-s"><i class="fa fa-user"></i>&nbsp;Edit Profile</a></li>
                          <li><a href="../logout.php"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a></li>
                     </ul>
                     <!-- <ul class="navbar-btns">
@@ -226,5 +228,3 @@
         <!-- .modal-dialog -->
     </div>
     <!-- Modal End -->
-
-

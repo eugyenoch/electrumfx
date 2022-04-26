@@ -17,7 +17,7 @@ include('cookie.php');
             <div class="card content-area">
                 <table class="table" style="width:50% !important; margin:auto;">
 <tr>
-    <td class="col-md-6"> <span class="btnTarget"><center><a href="" data-toggle="modal" data-target="#view-address" class="dt-type-md"><?php if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='btn btn-primary btn-md'>Make Payment</span>";}?></a></center></span></td>
+    <td class="col-md-6"> <span class="btnTarget"><center><a href="" data-toggle="modal" data-target="#view-address" class="dt-type-md"><?php if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='btn btn-primary btn-md'>Click To Proceed</span>";}?></a></center></span></td>
    <!--  <td class="col-md-6"> <span class="btnTarget"><center><a href="upload-proof.php" data-toggle="" data-target="" class="dt-type-md"><?php /*if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='btn btn-primary btn-md'>Upload Proof</span>";}*/?></a></center></span></td> -->
 </tr>
 </table>
@@ -39,7 +39,7 @@ include('cookie.php');
                                     <div class="dt-type-text">Type</div>
                                 </th>
                                <th class="data-col data-actions">
-                                     <div class="dt-type-text">Payment</div>
+                                     <div class="dt-type-text">Proceed</div>
                                 </th>
                             </tr>
                         </thead>
@@ -66,7 +66,7 @@ include('cookie.php');
         <?php if(isset($request_date)&&isset($fund_info['amount'])&&isset($fund_info['currency'])&&isset($fund_info['status'])){echo "<span class='dt-type-md badge badge-outline badge-success badge-md'>Credit</span>";}?>
         <span class="dt-type-sm badge badge-sq badge-outline badge-success badge-md ">C</span></td> 
 
-         <td class="data-col dt-tnxno"> <span class="btnTarget"><a href="" data-toggle="modal" data-target="#view-address" class="dt-type-md"><?php if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='btn btn-primary btn-md'>Payment</span>";}?></a></span></td>
+         <td class="data-col dt-tnxno"> <span class="btnTarget"><a href="" data-toggle="modal" data-target="#view-address" class="dt-type-md"><?php if(isset($request_date)&&isset($amount)&&isset($currency)&&isset($status)){echo "<span class='btn btn-primary btn-md'>Click To Proceed</span>";}?></a></span></td>
                             </tr>
                                                     </tbody>
                     </table>
@@ -298,7 +298,7 @@ include('cookie.php');
                 <!-- .col -->
                 <div class="col-md-4 mt-2 mt-sm-0">
                     <div class="d-flex justify-content-between justify-content-md-end align-items-center guttar-25px pdt-0-5x pdb-0-5x">
-                        <div class="copyright-text"><p style="padding:10px 0 !important;"><center><small>©&nbsp;<?= date('Y');?>&nbsp;<a href="#"><span class="orange">Zenith Broker Trade</span></a> | All rights reserved.&nbsp;<!-- Zenith Broker Trade - The easiest place to invest bitcoin. -->Zenith Broker Trade is a registered investment platform providing digital asset investment management services to individuals, lending and investment, multicurrency and multifunctional online platform based on blockchain technology.</small></center></p></div>
+                        <div class="copyright-text"><p><center><small>©&nbsp;<?= date('Y');?>&nbsp;<a href="#"><span class="orange">Electrum FX</span></a> | All rights reserved.&nbsp;<!-- Electrum FX - The easiest place to invest bitcoin. -->All rights reserved. Electrum FX is a registered investment platform providing digital asset investment management services to individuals, lending and investment, multicurrency and multifunctional online platform based on blockchain technology. Electrum FX is the easiest place to trade Bitcoin.</small></center></p></div>
                     </div>
                 </div>
                 <!-- .col -->

@@ -9,11 +9,10 @@ if(isset($_POST['fund'])){
   //Extract variables from user input
   $ftxn = $_POST['Ftxn'];
   $currency = $_POST['currency_id'];
-  $currency_name = $addresses_info['address_longname'];
-  $amount = floatval($_POST['amount']);  
+  //$amount = floatval($_POST['amount']);  
 
   /*$sql_fund_update = "UPDATE `fund` SET `currency` = '$currency', `amount` = '$amount' WHERE `fund`.`user_email` = '$user_email'";*/
-$sql_fund_update = "INSERT INTO fund(user_email,ftxn,currency,currency_name,amount)VALUES('$user_email','$ftxn','$currency','$currency_name','$amount')";
+$sql_fund_update = "INSERT INTO fund(user_email,ftxn,currency,amount,status)VALUES('$user_email','$ftxn','$currency',0,'approved')";
   if($con->query($sql_fund_update) === TRUE){
    //echo "<script>alert('Your funding request is submitted and is pending approval')</script>";
   echo"<script>location.href='user-transactions.php'</script>";

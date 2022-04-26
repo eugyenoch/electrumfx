@@ -112,7 +112,7 @@ include('../cookie.php');
   </div>
   <!-- .page-content -->
 </div>
-
+<?php include('footer-menu.php');?>
     <div class="footer-bar">
         <div class="container">
             <div class="row align-items-center justify-content-center">

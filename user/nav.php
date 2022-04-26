@@ -43,11 +43,12 @@
                 <div class="navbar-innr">
                     <ul class="navbar-menu">
                         <li><a href="https://electrumfx.org/user/user-area.php"><span class="icon-s"><i class="fa fa-columns"></i>&nbsp;Dashboard</a></li>
-                        <li><a href="https://electrumfx.org/user/edit-profile.php"><span class="icon-s"><i class="fa fa-user"></i>&nbsp;Edit Profile</a></li>
+                       
                         <!-- <li><a href="https://electrumfx.org/user/create-trade.php"><i class="fa fa-chart-line"></i>Create Trade</a> -->
                         </li>
                         <li><a href="https://electrumfx.org/user/user-transactions.php"><i class="fa fa-file-invoice-dollar"></i>&nbsp;Account Transactions</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#withdrawal-modal"><i class="fa fa-hand-holding-usd"></i>&nbsp;Withdrawal</a></li>
+                         <li><a href="https://electrumfx.org/user/edit-profile.php"><span class="icon-s"><i class="fa fa-user"></i>&nbsp;Edit Profile</a></li> 
                          <li><a href="logout.php"><i class="fa fa-sign-out-alt"></i>&nbsp;Logout</a></li>
                     </ul>
                     <ul class="navbar-btns">
@@ -85,10 +86,10 @@
                                     </select>
                             </div>
                         </div>
-                        <div class="input-item input-with-label">
+                        <!-- <div class="input-item input-with-label">
                             <label class="input-item-label">Enter Amount</label>
                             <input class="input-bordered" type="text" placeholder="Amount" name="amount" required />
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-warning btn-between" name="fund">
                             Proceed <i class="fa fa-forward"></i>
                         </button>
